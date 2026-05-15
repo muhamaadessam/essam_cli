@@ -9,9 +9,6 @@ class InjectionService {
       throw Exception('No closing brace found');
     }
 
-    return source.substring(0, lastBrace) +
-        injection +
-        '' +
-    source.substring(lastBrace);
+    return '${source.substring(0, lastBrace)}$injection${source.substring(lastBrace)}';
   }
 }

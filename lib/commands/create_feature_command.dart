@@ -120,9 +120,6 @@ class CreateFeatureCommand {
 
     final featureNameCap = _toPascalCase(featureName);
     final featureNameLower = _toSnakeCase(featureName);
-    final actionLower = 'get$featureNameCap';
-    final actionCap = 'Get$featureNameCap';
-    final responseClass = '${actionCap}Response';
     // Create Entity
     final entityFile = path.join(
         featurePath, 'domain', 'entities', '${featureNameLower}_entity.dart');
