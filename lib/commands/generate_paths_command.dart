@@ -278,7 +278,7 @@ class GeneratePathsCommand {
     final content = StringBuffer();
 
     content.writeln('// GENERATED FILE - DO NOT EDIT');
-    content.writeln("export 'package:$packageName/core/core.dart';");
+    content.writeln("export 'package:twafok_shared/twafok_shared.dart';");
     content.writeln();
 
     // Add commented full import line with detected package name
