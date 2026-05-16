@@ -1,3 +1,10 @@
+## 1.0.1+1
+
+- Replace `Either<Failure, T>` with `Result<T>` in repository, use case, and data source templates
+- Simplify `DataSource` implementation by utilizing `DioHelper.getData` with the new `fromJson` parameter
+- Refine regex patterns and formatting in `CubitGenerator` and `DataSourceGenerator`
+- Update device streaming configuration with Galaxy A32 options
+
 ## 1.0.1
 
 - Add DioConfig for flexible API configuration
