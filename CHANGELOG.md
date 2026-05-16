@@ -1,10 +1,13 @@
-cat > CHANGELOG.md << 'EOF'
+## 1.0.1
+
+- Add DioConfig for flexible API configuration
+- Add TwafokConfig for centralized app settings
+- Add CacheHelper integration
+- Improve theme management
+- Add API shortcuts (get, post, put, patch, delete)
+
 ## 1.0.0
 
 - Initial release
-- Add feature creation command
-- Add use case generation
-- Add DI file generation
-- Add barrel file generation
-- Auto-format and auto-fix support
-  EOF
+- Basic widgets and utilities
+- Theme support

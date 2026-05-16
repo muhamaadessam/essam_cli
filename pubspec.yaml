@@ -1,6 +1,6 @@
 name: twafok_cli
 description: CLI tool for Twafok project clean architecture - Generate features, usecases, DI and barrel files automatically
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/muhamaadessam/twafok_cli
 repository: https://github.com/muhamaadessam/twafok_cli
 issue_tracker: https://github.com/muhamaadessam/twafok_cli/issues
