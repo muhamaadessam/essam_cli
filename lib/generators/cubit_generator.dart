@@ -5,7 +5,6 @@ import 'package:path/path.dart' as path;
 import '../services/file_service.dart';
 import '../services/naming_service.dart';
 
-
 class CubitGenerator {
   final String featurePath;
   final NamingUtils naming;
@@ -33,12 +32,13 @@ class CubitGenerator {
 
     // 1. Add field declaration
     final fieldDecl = '  final ${naming.usecaseClass} ${naming.fieldName};';
-    final classPattern = RegExp(r'class\s+\w+Cubit\s+extends\s+Cubit<\w+State>\s*\{');
+    final classPattern =
+        RegExp(r'class\s+\w+Cubit\s+extends\s+Cubit<\w+State>\s*\{');
 
     if (!content.contains(fieldDecl)) {
       content = content.replaceFirstMapped(
         classPattern,
-            (match) => '${match.group(0)}\n$fieldDecl',
+        (match) => '${match.group(0)}\n$fieldDecl',
       );
       modified = true;
     }
@@ -48,7 +48,7 @@ class CubitGenerator {
 
     content = content.replaceFirstMapped(
       constructorPattern,
-          (match) {
+      (match) {
         final fullMatch = match.group(0)!;
 
         if (fullMatch.contains('()')) {

@@ -191,7 +191,7 @@ import 'package:dartz/dartz.dart';
 import '../../$featureNameLower.dart';
 
 abstract class Base${featureNameCap}Repository {
-  Future<Either<Failure, $responseClass>> $actionLower(params);
+  Future<Result<$responseClass>> $actionLower(params);
 }
 ''';
     await File(repoFile).writeAsString(content);
@@ -220,7 +220,7 @@ class ${featureNameCap}Repository extends Base${featureNameCap}Repository {
   ${featureNameCap}Repository(this.base${featureNameCap}RemoteDataSource);
 
   @override
-  Future<Either<Failure, $responseClass>> $actionLower(params) async {
+  Future<Result<$responseClass>> $actionLower(params) async {
     return await base${featureNameCap}RemoteDataSource.$actionLower(params);
   }
 }
@@ -248,30 +248,21 @@ import 'package:dio/dio.dart';
 import '../../$featureNameLower.dart';
 
 abstract class Base${featureNameCap}RemoteDataSource {
-  Future<Either<Failure, $responseClass>> $actionLower($requestClass params);
+  Future<Result<$responseClass>> $actionLower($requestClass params);
 }
 
 class ${featureNameCap}RemoteDataSource implements Base${featureNameCap}RemoteDataSource {
   @override
-  Future<Either<Failure, $responseClass>> $actionLower($requestClass params) async {
-    try {
-      final response = await DioHelper.getData(
+  Future<Result<$responseClass>> $actionLower($requestClass params) async {
+    return await DioHelper.getData(
         endPoint: 'TODO_ADD_ENDPOINT',
         query: params.toJson(),
+        fromJson: $responseClass.fromJson
       );
-      return response.fold((failure) {
-        return Left(failure);
-      }, (data) {
-        return Right($responseClass.fromJson(data['data']));
-      });
-    } on DioException catch (e) {
-      return Left(ServerFailure(DioHelper.handleError(e)));
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
-    }
   }
 }
 ''';
+
     await File(dsFile).writeAsString(content);
     print('  ✅ Remote data source created: ${path.basename(dsFile)}');
   }
@@ -300,7 +291,7 @@ class $useCaseClass extends BaseUseCase<$responseClass,$requestClass> {
   $useCaseClass(this.repository);
 
   @override
-  Future<Either<Failure, $responseClass>> call($requestClass params) async {
+  Future<Result<$responseClass>> call($requestClass params) async {
     return await repository.$actionLower(params);
   }
 }

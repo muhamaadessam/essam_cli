@@ -35,7 +35,7 @@ class ${naming.usecaseClass} extends BaseUseCase<${naming.responseClass}, ${nami
   ${naming.usecaseClass}(this.repository);
 
   @override
-  Future<Either<Failure, ${naming.responseClass}>> call(${naming.requestClass} params) async {
+  Future<Result<${naming.responseClass}>> call(${naming.requestClass} params) async {
     return await repository.${naming.actionCamel}(params);
   }
 }

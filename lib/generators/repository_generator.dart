@@ -23,7 +23,7 @@ class RepositoryGenerator {
     }
 
     final methodSig =
-        '  Future<Either<Failure, ${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params);';
+        '  Future<Result<${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params);';
 
     if (await FileUtils.containsPattern(baseRepoFile, naming.actionCamel)) {
       print('⚠️  Method already in BaseRepository – skipping');
@@ -52,7 +52,7 @@ class RepositoryGenerator {
 
     final methodImpl = '''
   @override
-  Future<Either<Failure, ${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params) async {
+  Future<Result<${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params) async {
     return await base${naming.featureCap}RemoteDataSource.${naming.actionCamel}(params);
   }
 ''';

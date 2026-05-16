@@ -19,7 +19,7 @@ class $usecaseClass extends BaseUseCase<$responseClass, $requestClass> {
   $usecaseClass(this.repository);
 
   @override
-  Future<Either<Failure, $responseClass>> call($requestClass params) async {
+  Future<Result<$responseClass>> call($requestClass params) async {
     return await repository.$actionCamel(params);
   }
 }

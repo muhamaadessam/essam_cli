@@ -5,7 +5,6 @@ import 'package:path/path.dart' as path;
 import '../services/file_service.dart';
 import '../services/naming_service.dart';
 
-
 class DataSourceGenerator {
   final String featurePath;
   final NamingUtils naming;
@@ -29,25 +28,18 @@ class DataSourceGenerator {
     }
 
     final abstractSig =
-        '  Future<Either<Failure, ${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params);';
+        '  Future<Result<${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params);';
 
     final implMethod = '''
   @override
-  Future<Either<Failure, ${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params) async {
-    try {
-      final response = await DioHelper.getData(
+  Future<Result<${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params) async {
+    
+      return await DioHelper.getData(
         endPoint: 'TODO_ADD_ENDPOINT',
         query: params.toJson(),
+        fromJson: ${naming.responseClass}.fromJson
       );
-      return response.fold(
-        (failure) => Left(failure),
-        (data) => Right(${naming.responseClass}.fromJson(data['data'])),
-      );
-    } on DioException catch (e) {
-      return Left(ServerFailure(DioHelper.handleError(e)));
-    } catch (e) {
-      return Left(ServerFailure(e.toString()));
-    }
+   
   }
 ''';
 
@@ -55,7 +47,8 @@ class DataSourceGenerator {
     print('✅ Methods added to DataSource : $dsFile');
   }
 
-  Future<void> _insertMethods(String filePath, String abstractSig, String implMethod) async {
+  Future<void> _insertMethods(
+      String filePath, String abstractSig, String implMethod) async {
     final file = File(filePath);
     var lines = await file.readAsLines();
 
