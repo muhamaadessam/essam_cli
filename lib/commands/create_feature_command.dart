@@ -257,7 +257,7 @@ class ${featureNameCap}RemoteDataSource implements Base${featureNameCap}RemoteDa
     return await DioHelper.getData(
         endPoint: 'TODO_ADD_ENDPOINT',
         query: params.toJson(),
-        fromJson: $responseClass.fromJson
+        fromJson: (data) => $responseClass.fromJson(data),
       );
   }
 }
