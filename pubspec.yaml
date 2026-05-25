@@ -1,15 +1,15 @@
-name: twafok_cli
-description: CLI tool for Twafok project clean architecture - Generate features, usecases, DI and barrel files automatically
-version: 1.0.1+1
-homepage: https://github.com/muhamaadessam/twafok_cli
-repository: https://github.com/muhamaadessam/twafok_cli
-issue_tracker: https://github.com/muhamaadessam/twafok_cli/issues
+name: essam_cli
+description: Dart CLI that scaffolds Clean Architecture features for Flutter — generates layers, use cases, DI, and barrel files automatically.
+version: 1.0.3
+homepage: https://github.com/muhamaadessam/essam_cli
+repository: https://github.com/muhamaadessam/essam_cli
+issue_tracker: https://github.com/muhamaadessam/essam_cli/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
 
 executables:
-  twafok: twafok_cli  # عشان تقدر تكتب twafok بدل twafok_cli
+  essam: essam_cli
 
 dependencies:
   args: ^2.4.0

@@ -1,10 +1,10 @@
 #!/usr/bin/env dart
 
 import 'dart:io';
-import 'package:twafok_cli/commands/add_usecase_command.dart';
-import 'package:twafok_cli/commands/create_feature_command.dart';
-import 'package:twafok_cli/commands/generate_di_command.dart';
-import 'package:twafok_cli/commands/generate_paths_command.dart';
+import 'package:essam_cli/commands/add_usecase_command.dart';
+import 'package:essam_cli/commands/create_feature_command.dart';
+import 'package:essam_cli/commands/generate_di_command.dart';
+import 'package:essam_cli/commands/generate_paths_command.dart';
 
 void main(List<String> arguments) {
   if (arguments.isEmpty) {
@@ -59,7 +59,7 @@ void main(List<String> arguments) {
       print('  generate_di, gen-di     - Generate dependency injection file');
       print('  generate_paths, gen-paths - Generate barrel file');
       print('');
-      print('Run "twafok help" for more information');
+      print('Run "essam help" for more information');
       exit(1);
   }
 }
@@ -67,29 +67,29 @@ void main(List<String> arguments) {
 void _printUsage() {
   print('''
 ╔══════════════════════════════════════════════════════════╗
-║                    Twafok CLI - Usage                     ║
+║                     Essam CLI - Usage                     ║
 ╚══════════════════════════════════════════════════════════╝
 
 Commands:
   create, create_feature  Create a complete feature
   add_usecase, add        Add a new UseCase to a feature
   generate_di, gen-di     Generate dependency injection file
-  generate_paths, gen-paths Generate barrel file
+  generate_paths, gen-paths, gen-barrel  Generate barrel file
 
 Examples:
   # Create a new feature
-  twafok_cli create Profile
-  twafok_cli create_feature Authentication
-  
+  essam create Profile
+  essam create_feature Authentication
+
   # Add UseCase to feature
-  twafok_cli add_usecase lib/features/Profile update_profile
-  twafok_cli add update_profile (from inside Profile folder)
-  
+  essam add_usecase lib/features/Profile update_profile
+  essam add update_profile (from inside Profile folder)
+
   # Generate DI and barrel files
-  twafok_cli gen-di lib/features/Profile
-  twafok_cli gen-paths (from inside feature folder)
+  essam gen-di lib/features/Profile
+  essam gen-barrel (from inside feature folder)
 
 For help on specific commands:
-  twafok <command> --help
+  essam <command> --help
 ''');
 }

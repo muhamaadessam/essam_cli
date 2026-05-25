@@ -1,0 +1,2 @@
+# Exclude the legacy entry-point that was renamed to essam_cli.dart
+bin/twafok_cli.dart
