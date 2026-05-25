@@ -128,11 +128,11 @@ class CreateFeatureCommand {
 
 import 'package:equatable/equatable.dart';
 
-class ${featureNameLower}Entity extends Equatable {
+class ${featureNameCap}Entity extends Equatable {
   final int id;
   final String name;
 
-  const ${featureNameLower}Entity({
+  const ${featureNameCap}Entity({
     required this.id,
     required this.name,
   });
@@ -152,7 +152,7 @@ class ${featureNameLower}Entity extends Equatable {
 
 import '../../$featureNameLower.dart';
 
-class ${featureNameCap}Model extends ${featureNameLower}Entity {
+class ${featureNameCap}Model extends ${featureNameCap}Entity {
   const ${featureNameCap}Model({
     required super.id,
     required super.name,
