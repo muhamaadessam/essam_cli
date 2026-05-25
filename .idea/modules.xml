@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/twafok_cli.iml" filepath="$PROJECT_DIR$/.idea/twafok_cli.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/essam_cli.iml" filepath="$PROJECT_DIR$/.idea/essam_cli.iml" />
     </modules>
   </component>
 </project>
