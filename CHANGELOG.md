@@ -1,4 +1,4 @@
-## 1.0.5+2
+## 1.0.5+3
 
 - Removed all remaining internal references to `twafok` in the codebase.
 
