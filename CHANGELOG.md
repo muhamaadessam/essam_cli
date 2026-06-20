@@ -1,3 +1,13 @@
+## 1.0.4
+
+- **Fix UseCase injection paths:** Updated `add_usecase` generators to correctly search in `repositories` and `data_sources` directories instead of singular folder names.
+- **Fix Cubit Generator Regex:** Fixed regex pattern to correctly identify and inject into `BaseCubit` classes instead of only standard `Cubit`.
+- **Fix Trailing Comma Syntax Error:** Prevented invalid Dart syntax and `dart format` failures by correctly handling trailing commas when injecting use cases into Cubit constructors.
+- **Match Feature Scaffolding Boilerplate:** 
+  - `Request` models now default to `id` only.
+  - Action methods now use `PageState` (`PageState.loading`, `PageState.success`, `PageState.errorWithSnackBar`) matching `create_feature` standards.
+- **Auto-Fix Support:** `add_usecase` command now automatically runs `dart fix --apply` after generating and formatting files.
+
 ## 1.0.3
 
 - **Package renamed** from `twafok_cli` to `essam_cli`

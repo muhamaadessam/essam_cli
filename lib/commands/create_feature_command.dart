@@ -187,7 +187,6 @@ class ${featureNameCap}Model extends ${featureNameCap}Entity {
 // GENERATED FILE - DO NOT EDIT
 
 import 'dart:io';
-import 'package:dartz/dartz.dart';
 import '../../$featureNameLower.dart';
 
 abstract class Base${featureNameCap}Repository {
@@ -211,7 +210,6 @@ abstract class Base${featureNameCap}Repository {
     final content = '''
 // GENERATED FILE - DO NOT EDIT
 
-import 'package:dartz/dartz.dart';
 import '../../$featureNameLower.dart';
 
 class ${featureNameCap}Repository extends Base${featureNameCap}Repository {
@@ -242,7 +240,6 @@ class ${featureNameCap}Repository extends Base${featureNameCap}Repository {
     final content = '''
 // GENERATED FILE - DO NOT EDIT
 
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import '../../$featureNameLower.dart';
@@ -257,8 +254,10 @@ class ${featureNameCap}RemoteDataSource implements Base${featureNameCap}RemoteDa
     return await DioHelper.getData(
         endPoint: 'TODO_ADD_ENDPOINT',
         query: params.toJson(),
-        fromJson: (data) => $responseClass.fromJson(data),
-      );
+        fromJson: (data) {
+          return $responseClass.fromJson(data);
+        },
+    );
   }
 }
 ''';
@@ -281,7 +280,6 @@ class ${featureNameCap}RemoteDataSource implements Base${featureNameCap}RemoteDa
     final content = '''
 // GENERATED FILE - DO NOT EDIT
 
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import '../../$featureNameLower.dart';
 

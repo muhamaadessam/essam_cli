@@ -9,7 +9,6 @@ String buildUseCaseTemplate({
   return '''
 // GENERATED FILE - DO NOT EDIT
 
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import '../../$featureLower.dart';
 

@@ -140,6 +140,9 @@ class AddUsecaseCommand {
       // 8. Format the project
       await _formatProject(workDir);
 
+      // 9. Run dart fix
+      await _runDartFix(workDir);
+
       print('');
       print('✨ Success!');
       print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
@@ -202,6 +205,25 @@ class AddUsecaseCommand {
       }
     } catch (e) {
       print('   ⚠️ Could not format project: $e');
+    }
+  }
+
+  Future<void> _runDartFix(String workDir) async {
+    print('   🔧 Running dart fix --apply...');
+    try {
+      final result = await Process.run(
+        'dart',
+        ['fix', '--apply'],
+        workingDirectory: workDir,
+        runInShell: true,
+      );
+      if (result.exitCode == 0) {
+        print('   ✅ Dart fix completed successfully');
+      } else {
+        print('   ⚠️ Dart fix had issues: ${result.stderr}');
+      }
+    } catch (e) {
+      print('   ⚠️ Could not run dart fix: $e');
     }
   }
 

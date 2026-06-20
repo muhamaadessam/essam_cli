@@ -33,7 +33,7 @@ class CubitGenerator {
     // 1. Add field declaration
     final fieldDecl = '  final ${naming.usecaseClass} ${naming.fieldName};';
     final classPattern =
-        RegExp(r'class\s+\w+Cubit\s+extends\s+Cubit<\w+State>\s*\{');
+        RegExp(r'class\s+\w+Cubit\s+extends\s+(?:Base)?Cubit<\w+State>\s*\{');
 
     if (!content.contains(fieldDecl)) {
       content = content.replaceFirstMapped(
@@ -58,7 +58,13 @@ class CubitGenerator {
           // Case 2: Constructor with params - FeatureCubit(this.param1, this.param2)
           if (!fullMatch.contains(naming.fieldName)) {
             // Add new param at the end
-            return fullMatch.replaceFirst(')', ', this.${naming.fieldName})');
+            final lastParen = fullMatch.lastIndexOf(')');
+            final before = fullMatch.substring(0, lastParen);
+            if (before.trimRight().endsWith(',')) {
+              return '$before this.${naming.fieldName},)';
+            } else {
+              return '$before, this.${naming.fieldName})';
+            }
           }
           return fullMatch;
         }
@@ -70,17 +76,18 @@ class CubitGenerator {
     if (!content.contains(actionMethodPattern)) {
       final actionMethod = '''
   Future<void> ${naming.actionCamel}${naming.featureCap}() async {
-    emit(state.copyWith(status: ${naming.featureCap}Status.loading));
+    emit(state.copyWith(pageState: PageState.loading));
     try {
       final result = await ${naming.fieldName}(
-        ${naming.requestClass}(id: 0, name: ''),
+        const  ${naming.requestClass}(id: 1),
       );
       result.fold(
-        (failure) => emit(state.copyWith(status: ${naming.featureCap}Status.error)),
-        (data)    => emit(state.copyWith(status: ${naming.featureCap}Status.success)),
+        (failure) => emit(state.copyWith(pageState: PageState.errorWithSnackBar,
+         failure: failure)),
+        (data) => emit(state.copyWith(pageState: PageState.success)),
       );
     } catch (_) {
-      emit(state.copyWith(status: ${naming.featureCap}Status.error));
+      emit(state.copyWith(pageState: PageState.errorWithSnackBar));
     }
   }
 ''';

@@ -25,7 +25,6 @@ class UsecaseGenerator {
     final content = '''
 // GENERATED FILE - DO NOT EDIT
 
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import '../../${naming.featureLower}.dart';
 
@@ -42,20 +41,19 @@ class ${naming.usecaseClass} extends BaseUseCase<${naming.responseClass}, ${nami
 
 class ${naming.requestClass} extends Equatable {
   final int id;
-  final String name;
+ 
 
   const ${naming.requestClass}({
     required this.id,
-    required this.name,
+ 
   });
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-  };
+        'id': id,
+      };
 
   @override
-  List<Object?> get props => [id, name];
+  List<Object?> get props => [id];
 }
 
 class ${naming.responseClass} extends Equatable {

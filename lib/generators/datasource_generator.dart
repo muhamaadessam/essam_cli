@@ -13,7 +13,7 @@ class DataSourceGenerator {
 
   Future<void> updateDataSource() async {
     final dsFile = await FileUtils.findFile(
-      path.join(featurePath, 'data', 'data_source'),
+      path.join(featurePath, 'data', 'data_sources'),
       '${naming.featureLower}_remote_data_source.dart',
     );
 
@@ -33,13 +33,13 @@ class DataSourceGenerator {
     final implMethod = '''
   @override
   Future<Result<${naming.responseClass}>> ${naming.actionCamel}(${naming.requestClass} params) async {
-    
-      return await DioHelper.getData(
+    return await DioHelper.getData(
         endPoint: 'TODO_ADD_ENDPOINT',
         query: params.toJson(),
-        fromJson: ${naming.responseClass}.fromJson
-      );
-   
+        fromJson: (data) {
+          return ${naming.responseClass}.fromJson(data);
+        },
+    );
   }
 ''';
 

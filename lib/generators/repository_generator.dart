@@ -13,7 +13,7 @@ class RepositoryGenerator {
 
   Future<void> updateBaseRepository() async {
     final baseRepoFile = await FileUtils.findFile(
-      path.join(featurePath, 'domain', 'repository'),
+      path.join(featurePath, 'domain', 'repositories'),
       'base_',
     );
 
@@ -36,7 +36,7 @@ class RepositoryGenerator {
 
   Future<void> updateRepositoryImpl() async {
     final repoFile = await FileUtils.findFile(
-      path.join(featurePath, 'data', 'repository'),
+      path.join(featurePath, 'data', 'repositories'),
       '${naming.featureLower}_repository.dart',
     );
 
