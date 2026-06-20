@@ -6,7 +6,7 @@ class GenerateDiCommand {
   void run(List<String> arguments, {String? workingDirectory}) async {
     final parser = ArgParser()
       ..addOption('package',
-          abbr: 'p', help: 'Package name', defaultsTo: 'twafok')
+          abbr: 'p', help: 'Package name', defaultsTo: 'essam')
       ..addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
 
     try {
@@ -33,7 +33,7 @@ class GenerateDiCommand {
           print(' 📍 Auto-detected feature path: $featurePath');
         } else {
           print(' ❌ Feature path is required');
-          print(' 👉 Example: twafok generate_di lib/features/Profile');
+          print(' 👉 Example: essam generate_di lib/features/Profile');
           exit(1);
         }
       }
@@ -66,13 +66,19 @@ class GenerateDiCommand {
           dataSourceClasses, repoClasses);
 
       // Generate DI file
-      await _generateDiFile(diFile, absoluteFeaturePath, featureName, packageName,
-          useCaseClasses, cubitClasses, dataSourceClasses,
-          repoClasses, rawName);
+      await _generateDiFile(
+          diFile,
+          absoluteFeaturePath,
+          featureName,
+          packageName,
+          useCaseClasses,
+          cubitClasses,
+          dataSourceClasses,
+          repoClasses,
+          rawName);
 
       print('');
       print(' ✅ DI generation completed!');
-
     } catch (e) {
       print(' ❌ Error: $e');
       exit(1);
@@ -80,8 +86,7 @@ class GenerateDiCommand {
   }
 
   Future<void> _collectClasses(String featurePath, List<String> useCases,
-      List<String> cubits, List<String> dataSources,
-      List<String> repos) async {
+      List<String> cubits, List<String> dataSources, List<String> repos) async {
     final files = Directory(featurePath)
         .list(recursive: true)
         .where((entity) => entity is File && entity.path.endsWith('.dart'));
@@ -103,18 +108,16 @@ class GenerateDiCommand {
         final prefix = filename.replaceAll('_use_case.dart', '');
         final className = '${_toPascalCase(prefix)}UseCase';
         useCases.add(className);
-      }
-      else if (filename.contains('_data_source.dart')) {
+      } else if (filename.contains('_data_source.dart')) {
         String className = filename.replaceAll('.dart', '');
         className = _toPascalCase(className);
         dataSources.add(className);
-      }
-      else if (filename.contains('_repository.dart')) {
+      } else if (filename.contains('_repository.dart')) {
         String className = filename.replaceAll('.dart', '');
         className = _toPascalCase(className);
         repos.add(className);
-      }
-      else if (filename.contains('_cubit.dart') || filename.contains('_bloc.dart')) {
+      } else if (filename.contains('_cubit.dart') ||
+          filename.contains('_bloc.dart')) {
         String className = filename.replaceAll('.dart', '');
         className = _toPascalCase(className);
         cubits.add(className);
@@ -122,10 +125,16 @@ class GenerateDiCommand {
     }
   }
 
-  Future<void> _generateDiFile(String diFile, String featurePath, String featureName,
-      String packageName, List<String> useCases,
-      List<String> cubits, List<String> dataSources,
-      List<String> repos, String rawName) async {
+  Future<void> _generateDiFile(
+      String diFile,
+      String featurePath,
+      String featureName,
+      String packageName,
+      List<String> useCases,
+      List<String> cubits,
+      List<String> dataSources,
+      List<String> repos,
+      String rawName) async {
     final content = StringBuffer();
 
     content.writeln('// GENERATED FILE - DO NOT EDIT');
@@ -159,7 +168,8 @@ class GenerateDiCommand {
     // Register Repositories
     for (var repo in repos) {
       final base = 'Base$repo';
-      content.writeln('      ..registerLazySingleton<$base>(() => $repo(di()))');
+      content
+          .writeln('      ..registerLazySingleton<$base>(() => $repo(di()))');
     }
 
     // Register UseCases
@@ -215,7 +225,9 @@ class GenerateDiCommand {
     final buffer = StringBuffer();
     for (var i = 0; i < input.length; i++) {
       final char = input[i];
-      if (i > 0 && char.toUpperCase() == char && RegExp(r'[A-Z]').hasMatch(char)) {
+      if (i > 0 &&
+          char.toUpperCase() == char &&
+          RegExp(r'[A-Z]').hasMatch(char)) {
         buffer.write('_');
       }
       buffer.write(char.toLowerCase());
@@ -233,18 +245,18 @@ class GenerateDiCommand {
   void _printHelp() {
     print('''
 ╔══════════════════════════════════════════════════════════╗
-║              Twafok CLI - Generate DI Command            ║
+║              Essam CLI - Generate DI Command            ║
 ╚══════════════════════════════════════════════════════════╝
 
 Usage: 
-  twafok generate_di <feature_path>
-  twafok generate_di (from inside feature folder)
+  essam generate_di <feature_path>
+  essam generate_di (from inside feature folder)
 
 Generates dependency injection file (_di.dart) for the feature.
 
 Examples:
-  twafok generate_di lib/features/Profile
-  twafok generate_di (when inside lib/features/Profile)
+  essam generate_di lib/features/Profile
+  essam generate_di (when inside lib/features/Profile)
 ''');
   }
 }

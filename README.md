@@ -14,7 +14,7 @@ Building features with Clean Architecture means creating a lot of boilerplate: e
 
 It generates a consistent folder structure across the `domain`, `data`, and `presentation` layers, follows the BLoC/Cubit pattern, and keeps your dependency injection and barrel (export) files in sync as your feature grows.
 
-> **Migrating from `twafok_cli`?** Run `dart pub global activate essam_cli` and replace the `twafok` command with `essam`. All commands and flags are identical.
+> **Migrating from `essam_cli`?** Run `dart pub global activate essam_cli` and replace the `essam` command with `essam`. All commands and flags are identical.
 
 ---
 
@@ -102,7 +102,7 @@ essam <command> [arguments] [options]
 
 | Option | Short | Description | Default |
 |---|---|---|---|
-| `--package` | `-p` | Package name used in generated imports | `twafok` |
+| `--package` | `-p` | Package name used in generated imports | `essam` |
 | `--help` | `-h` | Show help for the command | — |
 
 > **Note:** `generate_paths` reads the package name directly from your project's `pubspec.yaml`, so you never need to pass `--package` for that command.

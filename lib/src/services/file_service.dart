@@ -9,15 +9,16 @@ class FileUtils {
 
     final files = await dir
         .list(recursive: true)
-        .where((entity) => entity is File &&
-        path.basename(entity.path).contains(pattern))
+        .where((entity) =>
+            entity is File && path.basename(entity.path).contains(pattern))
         .toList();
 
     if (files.isEmpty) return null;
     return files.first.path;
   }
 
-  static Future<void> insertBeforeLastBrace(String filePath, String content) async {
+  static Future<void> insertBeforeLastBrace(
+      String filePath, String content) async {
     final file = File(filePath);
     var text = await file.readAsString();
 

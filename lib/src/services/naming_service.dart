@@ -20,7 +20,8 @@ class NamingUtils {
     // UseCase action names
     actionLower = usecaseAction.toLowerCase().replaceAll(' ', '_');
     actionPascal = _toPascalCase(actionLower);
-    actionCamel = '${actionPascal[0].toLowerCase()}${actionPascal.substring(1)}';
+    actionCamel =
+        '${actionPascal[0].toLowerCase()}${actionPascal.substring(1)}';
 
     // Full class names
     usecaseClass = '${actionPascal}UseCase';
@@ -33,7 +34,9 @@ class NamingUtils {
     final buffer = StringBuffer();
     for (var i = 0; i < input.length; i++) {
       final char = input[i];
-      if (i > 0 && char.toUpperCase() == char && RegExp(r'[A-Z]').hasMatch(char)) {
+      if (i > 0 &&
+          char.toUpperCase() == char &&
+          RegExp(r'[A-Z]').hasMatch(char)) {
         buffer.write('_');
       }
       buffer.write(char.toLowerCase());

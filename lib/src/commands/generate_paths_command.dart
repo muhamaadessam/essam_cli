@@ -6,7 +6,7 @@
 //   void run(List<String> arguments, {String? workingDirectory}) async {
 //     final parser = ArgParser()
 //       ..addOption('package',
-//           abbr: 'p', help: 'Package name', defaultsTo: 'twafok')
+//           abbr: 'p', help: 'Package name', defaultsTo: 'essam')
 //       ..addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
 //
 //     try {
@@ -32,7 +32,7 @@
 //           print(' 📍 Auto-detected feature path: $featurePath');
 //         } else {
 //           print(' ❌ Feature path is required');
-//           print(' 👉 Example: twafok generate_paths lib/features/Profile');
+//           print(' 👉 Example: essam generate_paths lib/features/Profile');
 //           exit(1);
 //         }
 //       }
@@ -71,7 +71,7 @@
 //     final content = StringBuffer();
 //
 //     content.writeln('// GENERATED FILE - DO NOT EDIT');
-//     content.writeln("export 'package:twafok/core/core.dart';");
+//     content.writeln("export 'package:essam/core/core.dart';");
 //     content.writeln();
 //
 //     // Add commented full import line
@@ -159,18 +159,18 @@
 //   void _printHelp() {
 //     print('''
 // ╔══════════════════════════════════════════════════════════╗
-// ║            Twafok CLI - Generate Paths Command           ║
+// ║            Essam CLI - Generate Paths Command           ║
 // ╚══════════════════════════════════════════════════════════╝
 //
 // Usage:
-//   twafok generate_paths <feature_path>
-//   twafok generate_paths (from inside feature folder)
+//   essam generate_paths <feature_path>
+//   essam generate_paths (from inside feature folder)
 //
 // Generates barrel file that exports all Dart files in the feature.
 //
 // Examples:
-//   twafok generate_paths lib/features/Profile
-//   twafok generate_paths (when inside lib/features/Profile)
+//   essam generate_paths lib/features/Profile
+//   essam generate_paths (when inside lib/features/Profile)
 // ''');
 //   }
 // }
@@ -209,7 +209,7 @@ class GeneratePathsCommand {
           print(' 📍 Auto-detected feature path: $featurePath');
         } else {
           print(' ❌ Feature path is required');
-          print(' 👉 Example: twafok generate_paths lib/features/Profile');
+          print(' 👉 Example: essam generate_paths lib/features/Profile');
           exit(1);
         }
       }
@@ -268,8 +268,8 @@ class GeneratePathsCommand {
 
     // Fallback to default
     print(
-        ' ⚠️ Could not find package name in pubspec.yaml, using default: twafok');
-    return 'twafok';
+        ' ⚠️ Could not find package name in pubspec.yaml, using default: essam');
+    return 'essam';
   }
 
   Future<void> _generateBarrelFile(String outputFile, String featurePath,
@@ -368,20 +368,20 @@ class GeneratePathsCommand {
   void _printHelp() {
     print('''
 ╔══════════════════════════════════════════════════════════╗
-║            Twafok CLI - Generate Paths Command           ║
+║            Essam CLI - Generate Paths Command           ║
 ╚══════════════════════════════════════════════════════════╝
 
 Usage: 
-  twafok generate_paths <feature_path>
-  twafok generate_paths (from inside feature folder)
+  essam generate_paths <feature_path>
+  essam generate_paths (from inside feature folder)
 
 Generates barrel file that exports all Dart files in the feature.
 
 The package name is automatically detected from pubspec.yaml.
 
 Examples:
-  twafok generate_paths lib/features/Profile
-  twafok generate_paths (when inside lib/features/Profile)
+  essam generate_paths lib/features/Profile
+  essam generate_paths (when inside lib/features/Profile)
 ''');
   }
 }

@@ -15,7 +15,7 @@ class AddUsecaseCommand {
   void run(List<String> arguments, {String? workingDirectory}) async {
     final parser = ArgParser()
       ..addOption('package',
-          abbr: 'p', help: 'Package name', defaultsTo: 'twafok')
+          abbr: 'p', help: 'Package name', defaultsTo: 'essam')
       ..addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
 
     try {
@@ -56,7 +56,7 @@ class AddUsecaseCommand {
           print('❌ Could not auto-detect feature path');
           print('💡 Please run this command from inside a feature folder');
           print(
-              '   Or provide the full path: twafok add_usecase lib/features/FeatureName action_name');
+              '   Or provide the full path: essam add_usecase lib/features/FeatureName action_name');
           exit(1);
         }
       }
@@ -65,9 +65,9 @@ class AddUsecaseCommand {
         print('❌ Missing usecase action');
         print('');
         print('Usage:');
-        print('  twafok add_usecase <feature_path> <usecase_action>');
+        print('  essam add_usecase <feature_path> <usecase_action>');
         print(
-            '  twafok add_usecase <usecase_action> (from inside feature folder)');
+            '  essam add_usecase <usecase_action> (from inside feature folder)');
         exit(1);
       }
 
@@ -90,7 +90,7 @@ class AddUsecaseCommand {
         print(
             '   1. You are running this command from inside a feature folder');
         print(
-            '   2. Or provide the full path: twafok add_usecase lib/features/buffet action_name');
+            '   2. Or provide the full path: essam add_usecase lib/features/buffet action_name');
         exit(1);
       }
 
@@ -98,7 +98,7 @@ class AddUsecaseCommand {
       final naming = NamingUtils(rawFeature, usecaseAction);
 
       print('');
-      print('🚀 Twafok CLI - Adding UseCase');
+      print('🚀 Essam CLI - Adding UseCase');
       print('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
       print('   UseCase     : ${naming.usecaseClass}');
       print('   Feature     : ${naming.featureCap}');
@@ -230,16 +230,16 @@ class AddUsecaseCommand {
   void _printHelp(ArgParser parser) {
     print('''
 ╔══════════════════════════════════════════════════════════╗
-║              Twafok CLI - Add UseCase Command            ║
+║              Essam CLI - Add UseCase Command            ║
 ╚══════════════════════════════════════════════════════════╝
 
 Usage: 
-  twafok add_usecase <feature_path> <usecase_action>
-  twafok add_usecase <usecase_action> (from inside feature folder)
+  essam add_usecase <feature_path> <usecase_action>
+  essam add_usecase <usecase_action> (from inside feature folder)
 
 Examples:
-  twafok add_usecase lib/features/Profile update_profile
-  twafok add_usecase update_profile (when inside lib/features/Profile)
+  essam add_usecase lib/features/Profile update_profile
+  essam add_usecase update_profile (when inside lib/features/Profile)
 ''');
   }
 }

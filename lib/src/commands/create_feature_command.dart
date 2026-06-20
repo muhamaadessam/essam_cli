@@ -10,7 +10,7 @@ class CreateFeatureCommand {
   void run(List<String> arguments, {String? workingDirectory}) async {
     final parser = ArgParser()
       ..addOption('package',
-          abbr: 'p', help: 'Package name', defaultsTo: 'twafok')
+          abbr: 'p', help: 'Package name', defaultsTo: 'essam')
       ..addFlag('help', abbr: 'h', help: 'Show help', negatable: false);
 
     try {
@@ -27,7 +27,7 @@ class CreateFeatureCommand {
 
       if (args.isEmpty) {
         print('❌ Feature name is required');
-        print('👉 Usage: twafok create_feature <feature_name>');
+        print('👉 Usage: essam create_feature <feature_name>');
         exit(1);
       }
 
@@ -85,7 +85,7 @@ class CreateFeatureCommand {
       print('   1. Add your business logic to the cubit');
       print('   2. Update the API endpoints in remote_data_source');
       print(
-          '   3. Add more use cases using: twafok add_usecase $featurePath <action>');
+          '   3. Add more use cases using: essam add_usecase $featurePath <action>');
     } catch (e) {
       print('❌ Error: $e');
       exit(1);
@@ -539,19 +539,19 @@ class ${featureNameCap}Screen extends BaseView<${featureNameCap}Cubit, ${feature
   void _printHelp() {
     print('''
 ╔══════════════════════════════════════════════════════════╗
-║            Twafok CLI - Create Feature Command           ║
+║            Essam CLI - Create Feature Command           ║
 ╚══════════════════════════════════════════════════════════╝
 
 Usage: 
-  twafok create_feature <feature_name>
-  twafok create <feature_name> (shortcut)
+  essam create_feature <feature_name>
+  essam create <feature_name> (shortcut)
 
 Creates a complete feature with all layers (domain, data, presentation).
 
 Examples:
-  twafok create_feature Profile
-  twafok create_feature Authentication
-  twafok create Profile (shortcut)
+  essam create_feature Profile
+  essam create_feature Authentication
+  essam create Profile (shortcut)
 
 Generated structure:
   lib/features/{feature_name}/

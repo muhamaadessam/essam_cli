@@ -1,8 +1,8 @@
 class InjectionService {
   static String injectBeforeLastBrace(
-      String source,
-      String injection,
-      ) {
+    String source,
+    String injection,
+  ) {
     final lastBrace = source.lastIndexOf('}');
 
     if (lastBrace == -1) {

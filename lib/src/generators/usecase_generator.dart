@@ -4,7 +4,6 @@ import 'package:path/path.dart' as path;
 
 import '../services/naming_service.dart';
 
-
 class UsecaseGenerator {
   final String featurePath;
   final NamingUtils naming;
@@ -15,7 +14,8 @@ class UsecaseGenerator {
     final usecaseDir = path.join(featurePath, 'domain', 'use_cases');
     await Directory(usecaseDir).create(recursive: true);
 
-    final usecaseFile = path.join(usecaseDir, '${naming.actionLower}_use_case.dart');
+    final usecaseFile =
+        path.join(usecaseDir, '${naming.actionLower}_use_case.dart');
 
     if (await File(usecaseFile).exists()) {
       print('⚠️  UseCase already exists, skipping creation: $usecaseFile');

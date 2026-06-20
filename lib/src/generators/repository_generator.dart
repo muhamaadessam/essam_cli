@@ -1,9 +1,7 @@
-
 import 'package:path/path.dart' as path;
 
 import '../services/file_service.dart';
 import '../services/naming_service.dart';
-
 
 class RepositoryGenerator {
   final String featurePath;
