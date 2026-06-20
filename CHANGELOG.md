@@ -1,3 +1,9 @@
+## 1.0.5
+
+- **Fix `twafok_shared` references:** Updated generated barrel files and documentation to use the new `essam_shared` package instead of the legacy `twafok_shared`.
+- **Clean up unused imports:** Removed unused imports (`flutter/material.dart`, `dio.dart`, `flutter_bloc.dart`) from generated files (data sources, states, cubits, views) to prevent lint warnings.
+- **Format code:** Applied dart formatter to `generate_paths_command.dart`.
+
 ## 1.0.4
 
 - **Fix UseCase injection paths:** Updated `add_usecase` generators to correctly search in `repositories` and `data_sources` directories instead of singular folder names.

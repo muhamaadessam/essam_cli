@@ -240,8 +240,6 @@ class ${featureNameCap}Repository extends Base${featureNameCap}Repository {
     final content = '''
 // GENERATED FILE - DO NOT EDIT
 
-import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import '../../$featureNameLower.dart';
 
 abstract class Base${featureNameCap}RemoteDataSource {
@@ -418,7 +416,6 @@ class ${featureNameCap}State extends BaseState {
     final cubitContent = '''
 // GENERATED FILE - DO NOT EDIT
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../$featureNameLower.dart';
 part '${featureNameLower}_state.dart';
 
@@ -459,7 +456,6 @@ class ${featureNameCap}Cubit extends BaseCubit<${featureNameCap}State> {
 // GENERATED FILE - DO NOT EDIT
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../$featureNameLower.dart';
 
 class ${featureNameCap}Screen extends BaseView<${featureNameCap}Cubit, ${featureNameCap}State> {

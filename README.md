@@ -239,7 +239,7 @@ Walks the feature directory and produces a single `<feature_name>.dart` file tha
 
 ## Generated Code Conventions
 
-The generated code assumes your project provides a small set of shared base classes — typically provided by the `twafok_shared` package or your own `core` library:
+The generated code assumes your project provides a small set of shared base classes — typically provided by the `essam_shared` package or your own `core` library:
 
 | Base class | Purpose |
 |---|---|

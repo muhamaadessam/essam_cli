@@ -175,7 +175,6 @@
 //   }
 // }
 
-
 import 'dart:io';
 import 'package:path/path.dart' as path;
 import 'package:args/args.dart';
@@ -233,11 +232,11 @@ class GeneratePathsCommand {
       print(' ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
       print(' 📦 Package name: $packageName');
 
-      await _generateBarrelFile(outputFile, absoluteFeaturePath, featureName, packageName, rawName);
+      await _generateBarrelFile(
+          outputFile, absoluteFeaturePath, featureName, packageName, rawName);
 
       print('');
       print(' ✅ Barrel file generation completed!');
-
     } catch (e) {
       print(' ❌ Error: $e');
       exit(1);
@@ -268,22 +267,23 @@ class GeneratePathsCommand {
     }
 
     // Fallback to default
-    print(' ⚠️ Could not find package name in pubspec.yaml, using default: twafok');
+    print(
+        ' ⚠️ Could not find package name in pubspec.yaml, using default: twafok');
     return 'twafok';
   }
 
   Future<void> _generateBarrelFile(String outputFile, String featurePath,
-      String featureName, String packageName,
-      String rawName) async {
+      String featureName, String packageName, String rawName) async {
     final content = StringBuffer();
 
     content.writeln('// GENERATED FILE - DO NOT EDIT');
-    content.writeln("export 'package:twafok_shared/twafok_shared.dart';");
+    content.writeln("export 'package:essam_shared/twafok_shared.dart';");
     content.writeln();
 
     // Add commented full import line with detected package name
     final relativePath = featurePath.substring(featurePath.indexOf('lib/'));
-    content.writeln("// import 'package:$packageName/$relativePath/$featureName.dart';");
+    content.writeln(
+        "// import 'package:$packageName/$relativePath/$featureName.dart';");
     content.writeln();
 
     // Special case for lib/Core
@@ -355,7 +355,9 @@ class GeneratePathsCommand {
     final buffer = StringBuffer();
     for (var i = 0; i < input.length; i++) {
       final char = input[i];
-      if (i > 0 && char.toUpperCase() == char && RegExp(r'[A-Z]').hasMatch(char)) {
+      if (i > 0 &&
+          char.toUpperCase() == char &&
+          RegExp(r'[A-Z]').hasMatch(char)) {
         buffer.write('_');
       }
       buffer.write(char.toLowerCase());
