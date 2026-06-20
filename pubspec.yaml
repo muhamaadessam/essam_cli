@@ -1,6 +1,6 @@
 name: essam_cli
 description: Dart CLI that scaffolds Clean Architecture features for Flutter — generates layers, use cases, DI, and barrel files automatically.
-version: 1.0.5+1
+version: 1.0.5+2
 homepage: https://github.com/muhamaadessam/essam_cli
 repository: https://github.com/muhamaadessam/essam_cli
 issue_tracker: https://github.com/muhamaadessam/essam_cli/issues

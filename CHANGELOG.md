@@ -1,6 +1,10 @@
+## 1.0.5+2
+
+- Removed all remaining internal references to `twafok` in the codebase.
+
 ## 1.0.5
 
-- **Fix `essam_shared` references:** Updated generated barrel files and documentation to use the new `essam_shared` package instead of the legacy `essam_shared`.
+- **Fix `essam_shared` references:** Updated generated barrel files and documentation to use the new `essam_shared` package instead of the legacy `twafok_shared`.
 - **Clean up unused imports:** Removed unused imports (`flutter/material.dart`, `dio.dart`, `flutter_bloc.dart`) from generated files (data sources, states, cubits, views) to prevent lint warnings.
 - **Format code:** Applied dart formatter to `generate_paths_command.dart`.
 
@@ -16,17 +20,17 @@
 
 ## 1.0.3
 
-- **Package renamed** from `essam_cli` to `essam_cli`
-- **New executable:** the CLI command is now `essam` (previously `essam`)
+- **Package renamed** from `twafok_cli` to `essam_cli`
+- **New executable:** the CLI command is now `essam` (previously `twafok`)
 - Update all internal help text and usage examples to use the `essam` executable
 - Improve `pubspec.yaml` description for better pub.dev discoverability
 - Add `gen-barrel` alias to the `generate_paths` help output
-- Add `.pubignore` to exclude the legacy `bin/essam_cli.dart` file from the published package
+- Add `.pubignore` to exclude the legacy `bin/twafok_cli.dart` file from the published package
 
 ## 1.0.2
 
 - Refactor `GeneratePathsCommand` with a cleaner, more robust implementation
-- Barrel file now automatically exports `package:essam_shared/essam_shared.dart` as the shared core dependency
+- Barrel file now automatically exports `package:twafok_shared/twafok_shared.dart` as the shared core dependency
 - Package name is now auto-detected from `pubspec.yaml` (walks up parent directories) instead of relying on the `--package` flag
 - Add `gen-barrel` as an additional alias for the `generate_paths` command
 - Fix inconsistent executable name in help output
@@ -42,7 +46,7 @@
 ## 1.0.1
 
 - Add DioConfig for flexible API configuration
-- Add EssamConfig for centralized app settings
+- Add TwafokConfig for centralized app settings
 - Add CacheHelper integration
 - Improve theme management
 - Add API shortcuts (get, post, put, patch, delete)

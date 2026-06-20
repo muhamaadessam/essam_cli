@@ -14,7 +14,7 @@ Building features with Clean Architecture means creating a lot of boilerplate: e
 
 It generates a consistent folder structure across the `domain`, `data`, and `presentation` layers, follows the BLoC/Cubit pattern, and keeps your dependency injection and barrel (export) files in sync as your feature grows.
 
-> **Migrating from `essam_cli`?** Run `dart pub global activate essam_cli` and replace the `essam` command with `essam`. All commands and flags are identical.
+> **Migrating from `twafok_cli`?** Run `dart pub global activate essam_cli` and replace the `twafok` command with `essam`. All commands and flags are identical.
 
 ---
 
