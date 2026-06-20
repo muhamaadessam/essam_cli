@@ -277,7 +277,7 @@ class GeneratePathsCommand {
     final content = StringBuffer();
 
     content.writeln('// GENERATED FILE - DO NOT EDIT');
-    content.writeln("export 'package:essam_shared/twafok_shared.dart';");
+    content.writeln("export 'package:essam_shared/essam_shared.dart';");
     content.writeln();
 
     // Add commented full import line with detected package name

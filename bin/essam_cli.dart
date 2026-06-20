@@ -1,10 +1,10 @@
 #!/usr/bin/env dart
 
 import 'dart:io';
-import 'package:essam_cli/commands/add_usecase_command.dart';
-import 'package:essam_cli/commands/create_feature_command.dart';
-import 'package:essam_cli/commands/generate_di_command.dart';
-import 'package:essam_cli/commands/generate_paths_command.dart';
+import 'package:essam_cli/src/commands/add_usecase_command.dart';
+import 'package:essam_cli/src/commands/create_feature_command.dart';
+import 'package:essam_cli/src/commands/generate_di_command.dart';
+import 'package:essam_cli/src/commands/generate_paths_command.dart';
 
 void main(List<String> arguments) {
   if (arguments.isEmpty) {
